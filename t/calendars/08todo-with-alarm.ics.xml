@@ -5,7 +5,7 @@
   <todos>
     <todo uid="0BC74A86-35E9-11D9-9E64-000D93C45D90" idref="1">
       <valarms count="1">
-        <valarm uid="" idref="">
+        <valarm>
           <when>2004-11-11T23:45:00</when>
           <action>DISPLAY</action>
           <description>Event reminder</description>

@@ -1,4 +1,4 @@
-#$Id: SAX.pm,v 1.2 2004/12/18 20:36:36 rick Exp $
+#$Id: SAX.pm,v 1.3 2004/12/29 04:00:42 rick Exp $
 package iCal::Parser::SAX;
 use strict;
 
@@ -9,7 +9,7 @@ use IO::File;
 use IO::String;
 use DateTime;
 
-our $VERSION=sprintf("%d.%02d", q$Revision: 1.2 $ =~ /(\d+)\.(\d+)/);
+our $VERSION=sprintf("%d.%02d", q$Revision: 1.3 $ =~ /(\d+)\.(\d+)/);
 our @EXPORT= qw();
 our @EXPORT_OK= qw();
 
@@ -202,8 +202,8 @@ sub process_component {
     # of key/value pairs into elements
     #clone in case event processed more than once
     my %e=%$ee;
-    $attrs{uid}=delete $e{UID};
-    $attrs{idref}=delete $e{idref};
+    $attrs{uid}=delete $e{UID} if $e{UID};
+    $attrs{idref}=delete $e{idref} if $e{idref};
     $attrs{'all-day'}=delete $e{allday} if $e{allday};
     # used in xslt stylesheet to figure out which
     # overlapping event this is
