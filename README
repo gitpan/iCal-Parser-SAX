@@ -97,5 +97,5 @@ COPYRIGHT
     with this module.
 
 SEE ALSO
-    <Text:iCal::asData>, XML::SAX::Base
+    iCal::Parser, XML::SAX::Base
 

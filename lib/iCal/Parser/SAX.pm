@@ -1,4 +1,4 @@
-#$Id: SAX.pm,v 1.1 2004/12/18 01:03:51 rick Exp $
+#$Id: SAX.pm,v 1.2 2004/12/18 20:36:36 rick Exp $
 package iCal::Parser::SAX;
 use strict;
 
@@ -9,7 +9,7 @@ use IO::File;
 use IO::String;
 use DateTime;
 
-our $VERSION=sprintf("%d.%02d", q$Revision: 1.1 $ =~ /(\d+)\.(\d+)/);
+our $VERSION=sprintf("%d.%02d", q$Revision: 1.2 $ =~ /(\d+)\.(\d+)/);
 our @EXPORT= qw();
 our @EXPORT_OK= qw();
 
@@ -396,4 +396,4 @@ LICENSE file included with this module.
 
 =head1 SEE ALSO
 
-L<Text:iCal::asData>, L<XML::SAX::Base>
+L<iCal::Parser>, L<XML::SAX::Base>

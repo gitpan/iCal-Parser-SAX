@@ -7,16 +7,16 @@ use iCal::Parser::SAX;
 use XML::SAX::Writer;
 use Getopt::Std;
 
-our $VERSION=sprintf("%d.%02d", q$Revision: 1.1 $ =~ /(\d+)\.(\d+)/);
+our $VERSION=sprintf("%d.%02d", q$Revision: 1.2 $ =~ /(\d+)\.(\d+)/);
 
 our %opts=();
-our $opts='f:t:m:Tedh';
+our $opts='f:t:m:TEdh';
 our $usage=qq{usage: $0 {$opts} file ...
   -f yyyymmdd only output events from inclusive date
   -t yyyymmdd only output events until date
   -m num      only output events num month from today
   -T          don't output todos
-  -e          don't output events
+  -E          don't output events
   -d          debug
   -h          the ususal
 };
@@ -24,7 +24,7 @@ our %optmap=(f=>'start',
 	     t=>'end',
 	     m=>'months',
 	     T=>'no_todos',
-	     e=>'no_events',
+	     E=>'no_events',
 	     d=>'debug',
 	    );
 getopts($opts,\%opts) || die $usage;
@@ -63,11 +63,11 @@ Mutlple input files are merged into a single XML ouput stream.
 
 =over 4
 
-=item f yyyymmdd
+=item -f yyyymmdd
 
 only output events from inclusive date
 
-=item t yyyymmdd
+=item -t yyyymmdd
 
 only output events until date
 
@@ -75,19 +75,19 @@ only output events until date
 
 only output events num month from the start date
 
-=item T 
+=item -T 
 
 don't output todos
 
-=item e 
+=item -E 
 
 don't output events
 
-=item d 
+=item -d 
 
 debug
 
-=item h 
+=item -h 
 
 the ususal
 

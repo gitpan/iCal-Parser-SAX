@@ -1,0 +1,8 @@
+2004-12-18  Rick Frankel  <rick@gg5.local>
+
+	* Makefile.PL: switch from Build.PL because cpan won't follow
+	prereqs from Build compat Makefile.PL
+
+	* lib/iCal/Parser/SAX.pm (pod): fix bad link
+
+	* ical2xml: change -e to -E for consistency, fix documentation
