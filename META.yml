@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: iCal-Parser-SAX
-version: 1.03
+version: 1.04
 author:
   - Rick Frankel, cpan@rickster.com
 abstract: Generate SAX events from an iCalendar
@@ -19,5 +19,5 @@ recommends:
 provides:
   iCal::Parser::SAX:
     file: lib/iCal/Parser/SAX.pm
-    version: 1.03
+    version: 1.04
 generated_by: Module::Build version 0.2606

@@ -24,7 +24,7 @@ my $build=Module::Build->new
       create_makefile_pl => 'passthrough',
 );
 if($build->y_n
-   ('Would you like to install ical2xml, a command line frontend?')) {
+   ('Would you like to install ical2xml, a command line frontend?','n')) {
     $build->{properties}->{script_files}=['scripts/ical2xml'];
 }
 $build->create_build_script;
