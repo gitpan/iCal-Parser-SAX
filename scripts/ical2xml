@@ -2,19 +2,19 @@
 
 use strict;
 
-use lib qw(../lib);
 use iCal::Parser::SAX;
 use XML::SAX::Writer;
 use Getopt::Std;
 
-our $VERSION=sprintf("%d.%02d", q$Revision: 1.3 $ =~ /(\d+)\.(\d+)/);
+our $VERSION=sprintf("%d.%02d", q$Revision: 1.7 $ =~ /(\d+)\.(\d+)/);
 
 our %opts=();
-our $opts='f:t:m:TEdh';
+our $opts='f:t:m:z:TEdh';
 our $usage=qq{usage: $0 {$opts} file ...
   -f yyyymmdd only output events from inclusive date
   -t yyyymmdd only output events until date
   -m num      only output num month of events
+  -z tz       timezone to use (e.g "America/New_York")
   -T          don't output todos
   -E          don't output events
   -d          debug
@@ -23,6 +23,7 @@ our $usage=qq{usage: $0 {$opts} file ...
 our %optmap=(f=>'start',
 	     t=>'end',
 	     m=>'months',
+	     z=>'tz',
 	     T=>'no_todos',
 	     E=>'no_events',
 	     d=>'debug',
@@ -34,9 +35,8 @@ die $usage unless @ARGV;
 my %args=();
 map {$args{$optmap{$_}}=$opts{$_} if defined $opts{$_}} keys %optmap;
 
-iCal::Parser::SAX->new(Handler=>XML::SAX::Writer->new(
-				Escape=>{XXX=>'XXX'}),
-			    %args)->parse_uris(@ARGV);
+iCal::Parser::SAX->new(Handler=>XML::SAX::Writer->new(Escape=>{XXX=>'XXX'}),
+		       %args)->parse_uris(@ARGV);
 exit 0;
 
 __END__
@@ -57,7 +57,7 @@ The xml document generated is designed
 for creating monthly calendars with weeks beginning on monday
 (e.g., by passing the output through an xsl styleheet).
 
-Mutlple input files are merged into a single XML ouput stream.
+Multiple input files are merged into a single XML output stream.
 
 =head1 OPTIONS
 
@@ -74,6 +74,10 @@ only output events until date
 =item m num
 
 only output events num month from the start date
+
+=item z tz
+
+adjust dates to specified timezone (defaults to local timezone)
 
 =item -T 
 

@@ -1,5 +1,1 @@
-<?xml version="1.0"?>
-<ical>
-  <calendar prodid="-//Testing//Test//EN" x-wr-timezone="floating" index="1" version="2.0" name="Calendar 1" id="1"/>
-  <events/>
-</ical>
+<ical><calendar prodid='-//Testing//Test//EN' x-wr-timezone='America/New_York' index='1' version='2.0' name='Calendar 1' id='1' /><events /></ical>

@@ -1,15 +1,14 @@
-#$Id: SAX.pm,v 1.4 2005/01/05 22:39:04 rick Exp $
+#$Id: SAX.pm,v 1.6 2005/02/02 01:54:13 rick Exp $
 package iCal::Parser::SAX;
 use strict;
 
-#use base qw(iCal::Parser::SAX);
 use base qw(XML::SAX::Base);
 use iCal::Parser;
 use IO::File;
 use IO::String;
 use DateTime;
 
-our $VERSION=sprintf("%d.%02d", q$Name: iCal-Parser-SAX-1-4 $ =~ /(\d+)-(\d+)/);
+our $VERSION=sprintf("%d.%02d", q$Name: ical-parser-sax-1-5 $ =~ /(\d+)-(\d+)/);
 our @EXPORT= qw();
 our @EXPORT_OK= qw();
 
@@ -161,8 +160,12 @@ sub process_day {
 		push @a,undef;
 		next;
 	    }
-	    push @a, DateTime::Span->from_datetimes(start=>$e->{DTSTART},
-						    end=>$e->{DTEND});
+	    #if an event ends at e.g., 9am and another starts
+	    #at 9, intersect will generate an overlap.
+	    #so, subtract 1 sec from the end of each event
+	    push @a, DateTime::Span->from_datetimes
+	    (start=>$e->{DTSTART},
+	     end=>$e->{DTEND}->clone->subtract(seconds=>1));
 	}
 	my @overlap=(0);
 	# each conflict adds one to the count of conflicts for the event
