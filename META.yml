@@ -1,8 +1,8 @@
---- #YAML:1.0
+---
 name: iCal-Parser-SAX
-version: 1.05
+version: 1.06
 author:
-  - Rick Frankel, cpan@rickster.com
+  - 'Rick Frankel, cpan@rickster.com'
 abstract: Generate SAX events from an iCalendar
 license: perl
 requires:
@@ -20,5 +20,5 @@ build_requires:
 provides:
   iCal::Parser::SAX:
     file: lib/iCal/Parser/SAX.pm
-    version: 1.05
-generated_by: Module::Build version 0.2606
+    version: 1.06
+generated_by: Module::Build version 0.261

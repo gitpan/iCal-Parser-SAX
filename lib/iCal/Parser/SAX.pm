@@ -1,4 +1,4 @@
-#$Id: SAX.pm,v 1.6 2005/02/02 01:54:13 rick Exp $
+#$Id: SAX.pm 58 2005-06-11 14:35:20Z rick $
 package iCal::Parser::SAX;
 use strict;
 
@@ -8,9 +8,11 @@ use IO::File;
 use IO::String;
 use DateTime;
 
-our $VERSION=sprintf("%d.%02d", q$Name: ical-parser-sax-1-5 $ =~ /(\d+)-(\d+)/);
-our @EXPORT= qw();
-our @EXPORT_OK= qw();
+# Get version from subversion url of tag or branch.
+# Note: putting "our" on same line as assignment breaks pmvers and
+# Module::Build parsing of version.
+our $VERSION;
+($VERSION)='$URL: svn+ssh://private/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.06/lib/iCal/Parser/SAX.pm $ '=~ m{.*/(?:tags|branches)/([^/$ \t]+)};
 
 our %NAMES=('X-WR-RELCALID'=>'id', 'X-WR-CALNAME'=>'name',
 	    'X-WR-CALDESC'=>'description');
@@ -96,12 +98,12 @@ sub process_events {
     my $cals=$hash->{cals};
 
     $self->start('events');
-    my @years=sort keys %$events;
+    my @years=sort { $a <=> $b } keys %$events;
     foreach my $y (@years) {
 	$self->start('year',{year=>$y});
 	my $year=$events->{$y};
 	#fill in missing months from start->end
-	my @months=sort keys %$year;
+	my @months=sort { $a <=> $b } keys %$year;
 	my $sm= $months[0];
 	my $se= $months[-1];
 
