@@ -1,4 +1,4 @@
-#$Id: SAX.pm 58 2005-06-11 14:35:20Z rick $
+#$Id: SAX.pm 60 2005-06-19 12:46:51Z rick $
 package iCal::Parser::SAX;
 use strict;
 
@@ -12,7 +12,7 @@ use DateTime;
 # Note: putting "our" on same line as assignment breaks pmvers and
 # Module::Build parsing of version.
 our $VERSION;
-($VERSION)='$URL: svn+ssh://private/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.06/lib/iCal/Parser/SAX.pm $ '=~ m{.*/(?:tags|branches)/([^/$ \t]+)};
+($VERSION)='$URL: svn+ssh://private/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.07/lib/iCal/Parser/SAX.pm $ '=~ m{.*/(?:tags|branches)/([^/$ \t]+)};
 
 our %NAMES=('X-WR-RELCALID'=>'id', 'X-WR-CALNAME'=>'name',
 	    'X-WR-CALDESC'=>'description');
@@ -165,9 +165,12 @@ sub process_day {
 	    #if an event ends at e.g., 9am and another starts
 	    #at 9, intersect will generate an overlap.
 	    #so, subtract 1 sec from the end of each event
+	    ## unless start == end
+	    ## note start > end is an error!
+	    my $end=$e->{DTSTART}->compare($e->{DTEND}) < 0
+	    ? $e->{DTEND}->clone->subtract(seconds=>1) : $e->{DTEND};
 	    push @a, DateTime::Span->from_datetimes
-	    (start=>$e->{DTSTART},
-	     end=>$e->{DTEND}->clone->subtract(seconds=>1));
+	    (start=>$e->{DTSTART}, end=>$end);
 	}
 	my @overlap=(0);
 	# each conflict adds one to the count of conflicts for the event

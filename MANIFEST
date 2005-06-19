@@ -21,6 +21,8 @@ t/calendars/03all-day-event.ics
 t/calendars/03all-day-event.ics.xml
 t/calendars/04recurrence.ics
 t/calendars/04recurrence.ics.xml
+t/calendars/04zero-hr-event.ics
+t/calendars/04zero-hr-event.ics.xml
 t/calendars/05exdate.ics
 t/calendars/05exdate.ics.xml
 t/calendars/06multi-day.ics
