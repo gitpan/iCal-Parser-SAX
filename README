@@ -16,7 +16,7 @@ DESCRIPTION
     xsl styleheet).
 
     The basic structure of the generated document (if output through a
-    simple output handler like "XML::SAX::Writer"), is as follows:
+    simple output handler like `XML::SAX::Writer'), is as follows:
 
       <ical>
         <calendars>
@@ -42,15 +42,15 @@ DESCRIPTION
       </ical>
 
     Along with basics, such as converting calendar attributes to lowercase
-    elements (e.g., a "DTSTART" attribute in the input would generate a sax
-    event like "element({Name="'dtstart'})>), a number of other processes
+    elements (e.g., a `DTSTART' attribute in the input would generate a sax
+    event like `element({Name=''dtstart'})>), a number of other processes
     occur:
 
-    *   "day" elements are are generated for each date within the months
+    *   `day' elements are are generated for each date within the months
         from the first month in the input to the last, even if there are no
         calendar events on that day. This guarantees a complete calendar
         month for further processing. If there is an overlap between two or
-        more events, the attribute "conflict", containing the number of
+        more events, the attribute `conflict', containing the number of
         concurrent overlaps, is added to the element.
 
     *   If the beginning or end of the month does not start on a monday, or
@@ -62,28 +62,31 @@ DESCRIPTION
         if they fall within the overlapping days in the first or last week
         of a monthly calendar.
 
-Methods
-    Along with the standard SAX parsing methods "parse_uri", "parse_file",
+METHODS
+    Along with the standard SAX parsing methods `parse_uri', `parse_file',
     etc.), the following methods are supported.
 
   new(%args)
-    Create a new SAX parser. All arguments other than "Handler" and
-    "no_escape" are passed to iCal::Parser.
 
-   Arguments
+    Create a new SAX parser. All arguments other than `Handler' and
+    `no_escape' are passed to iCal::Parser.
+
+    Arguments
     Handler
         The SAX handler.
 
     no_escape
         If not set, quotes, ampersands and apostrophes are converted to
-        entites. In any case < is converted to an entity, "\\n" is converted
-        to the return entity and double backslashes ("\\") are removed.
+        entites. In any case < is converted to an entity, `\\n' is converted
+        to the return entity and double backslashes (`\\') are removed.
 
   parse_uris(@uris)
-    Pass all the input uris to "iCal::Parser" and generate a combined output
+
+    Pass all the input uris to `iCal::Parser' and generate a combined output
     calendar.
 
   parse_hash($hash)
+
     Parse the hash returned from iCal::Parser::calendar directly.
 
 AUTHOR

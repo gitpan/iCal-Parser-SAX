@@ -58,7 +58,7 @@ is_xml($got,$expect,'parse hash');
 SKIP: {
     eval "use LWP::UserAgent";
     skip "http url", 1  unless -f "_build/DOHTTP" && !$@;
-    my $url="http://cybercode.dyndns.org/xml-sax-ical/test-cal.ics";
+    my $url="http://www.rickster.com/xml-sax-ical/test-cal.ics";
     $got='';
     iCal::Parser::SAX->new(Handler=>XML::SAX::Writer
 			   ->new(Escape=>{XXX=>'XXX'},Output=>\$got),

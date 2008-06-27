@@ -1,4 +1,4 @@
-#$Id: SAX.pm 60 2005-06-19 12:46:51Z rick $
+#$Id: SAX.pm 505 2008-06-27 22:53:18Z rick $
 package iCal::Parser::SAX;
 use strict;
 
@@ -9,10 +9,7 @@ use IO::String;
 use DateTime;
 
 # Get version from subversion url of tag or branch.
-# Note: putting "our" on same line as assignment breaks pmvers and
-# Module::Build parsing of version.
-our $VERSION;
-($VERSION)='$URL: svn+ssh://private/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.07/lib/iCal/Parser/SAX.pm $ '=~ m{.*/(?:tags|branches)/([^/$ \t]+)};
+our $VERSION= do {(q$URL: svn+ssh://xpc/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.08/lib/iCal/Parser/SAX.pm $=~ m$.*/(?:tags|branches)/([^/ 	]+)$)[0]||'0.1'};
 
 our %NAMES=('X-WR-RELCALID'=>'id', 'X-WR-CALNAME'=>'name',
 	    'X-WR-CALDESC'=>'description');
@@ -353,7 +350,7 @@ or last week of a monthly calendar.
 
 =back
 
-=head1 Methods
+=head1 METHODS
 
 Along with the standard SAX parsing methods C<parse_uri>, C<parse_file>, etc.),
 the following methods are supported.
