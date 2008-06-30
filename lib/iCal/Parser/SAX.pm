@@ -9,7 +9,7 @@ use IO::String;
 use DateTime;
 
 # Get version from subversion url of tag or branch.
-our $VERSION= do {(q$URL: svn+ssh://xpc/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.08/lib/iCal/Parser/SAX.pm $=~ m$.*/(?:tags|branches)/([^/ 	]+)$)[0]||'0.1'};
+our $VERSION= do {(q$URL: svn+ssh://xpc/var/lib/svn/rick/perl/ical/iCal-Parser-SAX/tags/1.09/lib/iCal/Parser/SAX.pm $=~ m$.*/(?:tags|branches)/([^/ 	]+)$)[0]||'0.1'};
 
 our %NAMES=('X-WR-RELCALID'=>'id', 'X-WR-CALNAME'=>'name',
 	    'X-WR-CALDESC'=>'description');
